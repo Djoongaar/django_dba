@@ -1,3 +1,4 @@
 .idea
 django_db_admin/settings.py
 */__pycache__
+*/*/__pycache__

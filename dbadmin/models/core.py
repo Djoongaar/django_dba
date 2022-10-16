@@ -31,4 +31,5 @@ class Sample(models.Model):
 
     class Meta:
         db_table = "samples"
+        unique_together = ("sample_id", "server")
 
