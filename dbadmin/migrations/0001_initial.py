@@ -149,13 +149,34 @@ class Migration(migrations.Migration):
                     END AS checksum_last_failure,
                     dbs.blk_read_time,
                     dbs.blk_write_time,
-                    NULL AS session_time,
-                    NULL AS active_time,
-                    NULL AS idle_in_transaction_time,
-                    NULL AS sessions,
-                    NULL AS sessions_abandoned,
-                    NULL AS sessions_fatal,
-                    NULL AS sessions_killed,
+                    CASE WHEN (SELECT setting::bigint < 14000 FROM pg_catalog.pg_settings WHERE name = 'server_version_num')
+                        THEN NULL 
+                        ELSE dbs.session_time
+                    END AS session_time,
+                    CASE WHEN (SELECT setting::bigint < 14000 FROM pg_catalog.pg_settings WHERE name = 'server_version_num')
+                        THEN NULL 
+                        ELSE dbs.active_time
+                    END AS active_time,
+                    CASE WHEN (SELECT setting::bigint < 14000 FROM pg_catalog.pg_settings WHERE name = 'server_version_num')
+                        THEN NULL
+                        ELSE dbs.idle_in_transaction_time
+                    END AS idle_in_transaction_time,
+                    CASE WHEN (SELECT setting::bigint < 14000 FROM pg_catalog.pg_settings WHERE name = 'server_version_num')
+                        THEN NULL 
+                        ELSE dbs.sessions 
+                    END AS sessions,
+                    CASE WHEN (SELECT setting::bigint < 14000 FROM pg_catalog.pg_settings WHERE name = 'server_version_num')
+                        THEN NULL
+                        ELSE dbs.sessions_abandoned
+                    END AS sessions_abandoned,
+                    CASE WHEN (SELECT setting::bigint < 14000 FROM pg_catalog.pg_settings WHERE name = 'server_version_num')
+                        THEN NULL 
+                        ELSE dbs.sessions_fatal
+                    END AS sessions_fatal,
+                    CASE WHEN (SELECT setting::bigint < 14000 FROM pg_catalog.pg_settings WHERE name = 'server_version_num')
+                        THEN NULL 
+                        ELSE dbs.sessions_killed
+                    END AS sessions_killed,
                     dbs.stats_reset,
                     pg_database_size(dbs.datid) AS datsize,
                     0 AS datsize_delta,
