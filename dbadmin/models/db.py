@@ -4,7 +4,10 @@ from dbadmin.models.core import Server, Sample
 
 
 class StatDatabase(models.Model):
-    """ Sample database statistics from pg_stat_database """
+    """
+    Model for storing differentials between old and new
+    sample of database statistics from pg_stat_database
+    """
     server = models.ForeignKey(Server, on_delete=models.CASCADE)
     sample = models.ForeignKey(Sample, on_delete=models.CASCADE)
     datid = models.IntegerField()
