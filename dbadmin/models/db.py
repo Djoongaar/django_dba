@@ -3,7 +3,7 @@ from django.db import models
 from dbadmin.models.core import Server, Sample
 
 
-class StatDatabase(models.Model):
+class SampleStatDatabase(models.Model):
     """
     Model for storing differentials between old and new
     sample of database statistics from pg_stat_database

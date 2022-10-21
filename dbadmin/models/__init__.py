@@ -1,2 +1,2 @@
-from .db import StatDatabase, LastStatDatabase
+from .db import SampleStatDatabase, LastStatDatabase
 from .core import Server, Sample
