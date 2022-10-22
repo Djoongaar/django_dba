@@ -36,7 +36,6 @@ def take_sample(request):
         data_cur = LastStatDatabase.objects.get(datname=db_name)
         if data_cur.stats_reset == data_last.stats_reset:
             db_stat = SampleStatDatabase(
-                server=server,
                 sample=new_sample,
                 datid=data_cur.datid,
                 datname=data_cur.datname,
@@ -72,7 +71,6 @@ def take_sample(request):
         else:
             # In case of statistics reset
             db_stat = SampleStatDatabase(
-                server=server,
                 sample=new_sample,
                 datid=data_cur.datid,
                 datname=data_cur.datname,

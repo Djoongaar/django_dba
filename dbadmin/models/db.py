@@ -8,7 +8,6 @@ class SampleStatDatabase(models.Model):
     Model for storing differentials between old and new
     sample of database statistics from pg_stat_database
     """
-    server = models.ForeignKey(Server, on_delete=models.CASCADE)
     sample = models.ForeignKey(Sample, on_delete=models.CASCADE)
     datid = models.IntegerField()
     datname = models.CharField(max_length=16)
@@ -43,7 +42,7 @@ class SampleStatDatabase(models.Model):
 
     class Meta:
         db_table = "sample_stat_database"
-        unique_together = ("server", "sample", "datid")
+        unique_together = ("sample", "datid")
 
 
 class LastStatDatabase(models.Model):
