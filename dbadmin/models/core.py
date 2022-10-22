@@ -17,7 +17,7 @@ class Server(models.Model):
     """
     server_id = models.PositiveSmallIntegerField(primary_key=True)
     topn = models.PositiveSmallIntegerField(default=20)
-    max_sample_age = models.PositiveIntegerField(default=7, verbose_name='')
+    max_sample_age = models.PositiveIntegerField(default=7)
     track_sample_timings = models.BooleanField(default=False)
     max_query_length = models.PositiveIntegerField(default=20_000)
     frequency = models.PositiveIntegerField(default=60*30)

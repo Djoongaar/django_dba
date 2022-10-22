@@ -18,6 +18,9 @@ class SampleStatCluster(models.Model):
     stats_reset = models.DateTimeField(null=True)
     wal_size = models.BigIntegerField(null=True)
 
+    class Meta:
+        db_table = "sample_stat_cluster"
+
 
 class LastStatCluster(models.Model):
     server_id = models.BigIntegerField(primary_key=True)

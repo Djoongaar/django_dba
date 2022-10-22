@@ -12,5 +12,4 @@ class ServerAdmin(admin.ModelAdmin):
         "track_sample_timings",
         "max_query_length",
         "max_sample_age",
-        "last_sample_id"
     )
