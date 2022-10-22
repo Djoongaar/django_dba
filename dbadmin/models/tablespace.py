@@ -14,7 +14,7 @@ class Tablespaces(models.Model):
 
 
 class SampleStatTablespace(models.Model):
-    sample_id = models.ForeignKey(Sample, on_delete=models.CASCADE)
+    sample = models.ForeignKey(Sample, on_delete=models.CASCADE)
     tablespace = models.ForeignKey(Tablespaces, on_delete=models.CASCADE)
     size = models.IntegerField()
     size_delta = models.IntegerField()
